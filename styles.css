@@ -22,7 +22,7 @@
 
 html, body {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background-color: var(--bg-dark);
   color: var(--text-white);
   font-family: var(--font-main);
@@ -39,11 +39,11 @@ a {
    LIQUID GLASS EFFECT
    ========================================================================== */
 .liquid-glass {
-  background: rgba(255, 255, 255, 0.01);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   position: relative;
   overflow: hidden;
 }
@@ -74,15 +74,15 @@ a {
   inset: 0;
   background: 
     linear-gradient(90deg, 
-      rgba(0, 0, 0, 0.94) 0%, 
-      rgba(0, 0, 0, 0.8) 38%, 
-      rgba(0, 0, 0, 0.4) 65%, 
-      rgba(0, 0, 0, 0.1) 100%
+      rgba(0, 0, 0, 0.95) 0%, 
+      rgba(0, 0, 0, 0.84) 38%, 
+      rgba(0, 0, 0, 0.45) 65%, 
+      rgba(0, 0, 0, 0.2) 100%
     ),
     linear-gradient(180deg, 
       rgba(0, 0, 0, 0.65) 0%, 
       rgba(0, 0, 0, 0) 25%, 
-      rgba(0, 0, 0, 0.6) 100%
+      rgba(0, 0, 0, 0.7) 100%
     );
   pointer-events: none;
 }
@@ -97,7 +97,7 @@ a {
   right: 0;
   z-index: 50;
   padding: 20px 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -189,25 +189,27 @@ a {
 }
 
 /* ==========================================================================
-   HERO 1 MAIN SECTION
+   MAIN LAYOUT & HERO 1 SECTION
    ========================================================================== */
 .main-content {
   position: relative;
   z-index: 10;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+  width: 100%;
 }
 
 .hero-section {
   width: 100%;
-  padding: 130px 0 60px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 140px 0 60px;
 }
 
 .hero-container {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
+  width: 100%;
 }
 
 .hero-text-content {
@@ -297,6 +299,106 @@ a {
 }
 
 /* ==========================================================================
+   CONSTRUTORAS & INCORPORADORAS PARCEIRAS SECTION (MATCHING SCREENSHOT)
+   ========================================================================== */
+.partners-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 50px 0 90px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(5, 6, 8, 0.85) 50%, rgba(0, 0, 0, 0.95) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.partners-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.partners-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.partners-tagline {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #7b8190;
+  text-transform: uppercase;
+}
+
+.partners-grid {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.partner-card {
+  height: 80px;
+  border-radius: 16px;
+  background: rgba(16, 17, 22, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.partner-card:hover {
+  background: rgba(24, 26, 34, 0.88);
+  border-color: rgba(212, 160, 90, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), 0 0 16px rgba(212, 160, 90, 0.15);
+}
+
+.partner-logo-text {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: baseline;
+  user-select: none;
+}
+
+.partner-logo-text.cyrela {
+  letter-spacing: 0.09em;
+  font-weight: 900;
+}
+
+.partner-logo-text.dialogo {
+  letter-spacing: 0.05em;
+  font-weight: 800;
+}
+
+.partner-logo-text.mitre {
+  letter-spacing: 0.08em;
+  font-weight: 900;
+}
+
+.partner-logo-text.lavvi {
+  letter-spacing: 0.12em;
+  font-weight: 800;
+}
+
+.partner-dot {
+  color: var(--accent-gold);
+  font-weight: 900;
+  margin-left: 2px;
+}
+
+/* ==========================================================================
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 1024px) {
@@ -305,12 +407,18 @@ a {
   }
 
   .nav-container,
-  .hero-container {
+  .hero-container,
+  .partners-container {
     padding: 0 24px;
   }
 
   .hero-section {
-    padding: 110px 0 60px;
+    padding: 120px 0 60px;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
 
@@ -323,5 +431,14 @@ a {
   .btn-primary-white,
   .btn-secondary-glass {
     justify-content: center;
+  }
+
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .partner-card {
+    height: 70px;
   }
 }
