@@ -377,39 +377,42 @@ a {
 }
 
 .partner-logo-text {
-  font-size: 1.35rem;
-  font-weight: 800;
+  font-family: 'Syne', var(--font-main);
+  font-size: 1.42rem;
+  font-weight: 900;
   color: #ffffff;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   display: inline-flex;
   align-items: baseline;
   user-select: none;
+  -webkit-text-stroke: 0.35px #ffffff;
 }
 
 .partner-logo-text.cyrela {
-  letter-spacing: 0.09em;
+  letter-spacing: 0.12em;
   font-weight: 900;
 }
 
 .partner-logo-text.dialogo {
-  letter-spacing: 0.05em;
-  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-weight: 900;
 }
 
 .partner-logo-text.mitre {
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   font-weight: 900;
 }
 
 .partner-logo-text.lavvi {
-  letter-spacing: 0.12em;
-  font-weight: 800;
+  letter-spacing: 0.15em;
+  font-weight: 900;
 }
 
 .partner-dot {
   color: var(--accent-gold);
   font-weight: 900;
   margin-left: 2px;
+  -webkit-text-stroke: 0.35px var(--accent-gold);
 }
 
 /* ==========================================================================
