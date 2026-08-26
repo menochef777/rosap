@@ -3,87 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flow — ROSAP | Immersive Architectural Experience</title>
-  <meta name="description" content="Experiência 3D imersiva do Edifício Rosap. Fullscreen cinematic architecture.">
-  
-  <!-- Google Fonts: Inter & Plus Jakarta Sans & Syne -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
+  <title>ROSAP — 3D Cinematic Showcase</title>
+  <meta name="description" content="Apresentação arquitetônica 3D do Edifício Rosap.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="fullscreen-body">
 
-  <!-- FULLSCREEN 3D CANVAS BACKGROUND -->
+  <!-- FULLSCREEN 3D CANVAS (PURE VISUAL, AUTO-LOOP) -->
   <div class="hero-canvas-fullscreen" id="canvasContainer">
     <canvas id="heroCanvas"></canvas>
-    <div class="canvas-vignette-overlay"></div>
-
+    
     <!-- Preloader Spinner -->
     <div class="canvas-loader" id="canvasLoader">
       <div class="loader-spinner"></div>
-      <span class="loader-text">Carregando experiência 3D <span id="loaderPercent">0%</span></span>
-    </div>
-  </div>
-
-  <!-- FLOATING MINIMAL HEADER -->
-  <header class="fullscreen-header">
-    <div class="header-inner">
-      <div class="brand-tag">
-        <span class="brand-dot"></span>
-        <span class="brand-name">ROSAP</span>
-      </div>
-
-      <div class="header-right-tools">
-        <button class="glass-icon-btn" id="playPauseBtn" title="Play / Pause">
-          <i class="fa-solid fa-pause" id="playPauseIcon"></i>
-        </button>
-        <button class="glass-icon-btn" id="fullscreenBtn" title="Tela Cheia">
-          <i class="fa-solid fa-expand" id="fullscreenIcon"></i>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- CENTER TITLE & TYPOGRAPHY HERO (Google Flow Style) -->
-  <div class="flow-center-hero">
-    <div class="flow-content">
-      <div class="flow-brand-top">
-        <span class="flow-sup">ROSAP</span>
-      </div>
-      
-      <h1 class="flow-main-title">Flow</h1>
-      
-      <p class="flow-subtitle">Luxury Living • 3D Immersive Architectural Studio</p>
-
-      <div class="flow-interaction-hint">
-        <i class="fa-solid fa-arrows-left-right"></i>
-        <span>Arraste para explorar em 360°</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- BOTTOM SLEEK CONTROLS & TIMELINE HUD -->
-  <div class="bottom-floating-hud">
-    <div class="hud-inner glass-pill">
-      <span class="hud-frame-label" id="hudCurrentFrame">001</span>
-      
-      <div class="hud-track" id="scrubberTrack">
-        <div class="hud-fill" id="scrubberProgress"></div>
-        <div class="hud-thumb" id="scrubberThumb"></div>
-      </div>
-      
-      <span class="hud-frame-label">300</span>
-
-      <div class="hud-actions">
-        <button class="hud-btn-mini" id="resetAngleBtn" title="Reiniciar Ângulo">
-          <i class="fa-solid fa-rotate-right"></i>
-        </button>
-      </div>
     </div>
   </div>
 

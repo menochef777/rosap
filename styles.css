@@ -1,22 +1,7 @@
 /* ==========================================================================
-   ROSAP "FLOW" IMMERSIVE FULLSCREEN 3D SHOWCASE
+   ROSAP — PURE FULLSCREEN 3D CINEMATIC AUTO-LOOP
    ========================================================================== */
 
-:root {
-  --bg-dark: #000000;
-  --text-white: #ffffff;
-  --text-dim: rgba(255, 255, 255, 0.7);
-  --accent-gold: #c5a880;
-  --glass-bg: rgba(20, 20, 25, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.15);
-  
-  --font-title: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-brand: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
-  
-  --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -27,28 +12,16 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: var(--bg-dark);
-  font-family: var(--font-title);
-  color: var(--text-white);
-  -webkit-font-smoothing: antialiased;
+  background-color: #000000;
   user-select: none;
 }
 
-/* ==========================================================================
-   FULLSCREEN CANVAS BACKGROUND (ZERO WHITE BORDERS)
-   ========================================================================== */
 .hero-canvas-fullscreen {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1;
   background: #000000;
-  cursor: grab;
-}
-
-.hero-canvas-fullscreen:active {
-  cursor: grabbing;
 }
 
 #heroCanvas {
@@ -58,318 +31,27 @@ html, body {
   object-fit: cover;
 }
 
-/* Vignette and contrast gradient */
-.canvas-vignette-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.45) 80%, rgba(0, 0, 0, 0.7) 100%);
-  pointer-events: none;
-}
-
-/* Preloader */
+/* Minimal subtle preloader */
 .canvas-loader {
   position: absolute;
   inset: 0;
-  background: #08080a;
+  background: #000000;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  color: #ffffff;
   z-index: 50;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.5s ease;
 }
 
 .loader-spinner {
-  width: 44px;
-  height: 44px;
-  border: 3px solid rgba(255, 255, 255, 0.15);
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
   border-top-color: #ffffff;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
 
-.loader-text {
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.75);
-}
-
 @keyframes spin {
   to { transform: rotate(360deg); }
-}
-
-/* ==========================================================================
-   FLOATING MINIMAL HEADER
-   ========================================================================== */
-.fullscreen-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 20;
-  padding: 24px 36px;
-  pointer-events: none;
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1600px;
-  margin: 0 auto;
-}
-
-.brand-tag {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  padding: 8px 18px;
-  border-radius: 9999px;
-  pointer-events: auto;
-}
-
-.brand-dot {
-  width: 7px;
-  height: 7px;
-  background: #10b981;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
-}
-
-.brand-name {
-  font-family: var(--font-brand);
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
-  color: #ffffff;
-}
-
-.header-right-tools {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  pointer-events: auto;
-}
-
-.glass-icon-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.glass-icon-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.06);
-}
-
-/* ==========================================================================
-   CENTER HERO "FLOW" (EXACT GOOGLE FLOW STYLE)
-   ========================================================================== */
-.flow-center-hero {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-
-.flow-content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: translateY(-20px);
-}
-
-.flow-brand-top {
-  margin-bottom: 2px;
-}
-
-.flow-sup {
-  font-family: var(--font-brand);
-  font-size: clamp(1rem, 1.6vw, 1.4rem);
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-}
-
-.flow-main-title {
-  font-family: var(--font-title);
-  font-size: clamp(4.5rem, 14vw, 11rem);
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
-  color: #ffffff;
-  text-shadow: 
-    0 0 35px rgba(255, 255, 255, 0.65),
-    0 0 80px rgba(255, 255, 255, 0.25),
-    0 10px 40px rgba(0, 0, 0, 0.8);
-  animation: glowPulse 4s ease-in-out infinite alternate;
-}
-
-@keyframes glowPulse {
-  0% {
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 10px 40px rgba(0, 0, 0, 0.8);
-  }
-  100% {
-    text-shadow: 0 0 50px rgba(255, 255, 255, 0.85), 0 0 100px rgba(255, 255, 255, 0.35), 0 10px 40px rgba(0, 0, 0, 0.8);
-  }
-}
-
-.flow-subtitle {
-  font-size: clamp(0.9rem, 1.4vw, 1.25rem);
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 0.04em;
-  margin-top: 18px;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
-}
-
-.flow-interaction-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 8px 18px;
-  border-radius: 9999px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.75);
-  margin-top: 28px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-/* ==========================================================================
-   BOTTOM FLOATING HUD / TIMELINE CONTROLS
-   ========================================================================== */
-.bottom-floating-hud {
-  position: fixed;
-  bottom: 28px;
-  left: 0;
-  right: 0;
-  z-index: 20;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-}
-
-.glass-pill {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  padding: 10px 22px;
-  border-radius: 9999px;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
-  pointer-events: auto;
-}
-
-.hud-frame-label {
-  font-family: var(--font-brand);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.75);
-  letter-spacing: 0.05em;
-  min-width: 28px;
-}
-
-.hud-track {
-  width: 220px;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 9999px;
-  position: relative;
-  cursor: pointer;
-}
-
-.hud-fill {
-  height: 100%;
-  background: #ffffff;
-  border-radius: 9999px;
-  width: 0%;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-}
-
-.hud-thumb {
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-  width: 14px;
-  height: 14px;
-  background: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
-  pointer-events: none;
-}
-
-.hud-actions {
-  display: flex;
-  align-items: center;
-  border-left: 1px solid rgba(255, 255, 255, 0.15);
-  padding-left: 10px;
-}
-
-.hud-btn-mini {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.hud-btn-mini:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-}
-
-/* ==========================================================================
-   RESPONSIVE
-   ========================================================================== */
-@media (max-width: 768px) {
-  .fullscreen-header {
-    padding: 16px 20px;
-  }
-
-  .hud-track {
-    width: 120px;
-  }
-
-  .flow-subtitle {
-    margin-top: 12px;
-    padding: 0 20px;
-  }
 }

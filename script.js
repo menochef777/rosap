@@ -1,6 +1,6 @@
 /**
- * ROSAP "FLOW" — FULLSCREEN 3D CANVAS EXPERIENCE
- * 300-Frame Progressive Preloader & Interactive Orbit Engine
+ * ROSAP — FULLSCREEN AUTOMATIC 3D LOOP ENGINE
+ * Smooth 60fps frame sequence rendering across 300 frames
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,39 +10,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // DOM
   const canvas = document.getElementById('heroCanvas');
   const ctx = canvas.getContext('2d');
-  const canvasContainer = document.getElementById('canvasContainer');
   const canvasLoader = document.getElementById('canvasLoader');
-  const loaderPercent = document.getElementById('loaderPercent');
 
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const playPauseIcon = document.getElementById('playPauseIcon');
-  const fullscreenBtn = document.getElementById('fullscreenBtn');
-  const fullscreenIcon = document.getElementById('fullscreenIcon');
-  const scrubberTrack = document.getElementById('scrubberTrack');
-  const scrubberProgress = document.getElementById('scrubberProgress');
-  const scrubberThumb = document.getElementById('scrubberThumb');
-  const hudCurrentFrame = document.getElementById('hudCurrentFrame');
-  const resetAngleBtn = document.getElementById('resetAngleBtn');
-
-  // Animation State
+  // State
   const images = new Array(TOTAL_FRAMES);
   let loadedCount = 0;
   let currentFrame = 0;
   let targetFrame = 0;
-  let isPlaying = true;
   let playDirection = 1;
-  let playSpeed = 0.6; // Cinematic speed
-  let isDragging = false;
+  const playSpeed = 0.65; // Adjust for smooth cinematic speed
+  let isUserInteracting = false;
   let startX = 0;
   let startFrame = 0;
-  let animationId = null;
 
   function getFrameFilename(index) {
     const num = String(index + 1).padStart(3, '0');
     return `${FRAME_DIR}/ezgif-frame-${num}.jpg`;
   }
 
-  // Fullscreen Canvas Resize
+  // Handle Fullscreen Canvas Resize & Retina Resolution
   function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
     const width = window.innerWidth;
@@ -54,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderFrame(Math.round(currentFrame));
   }
 
-  // Render Frame with Aspect Cover
+  // Render a specific frame with object-fit: cover calculation
   function renderFrame(index) {
     const safeIndex = Math.max(0, Math.min(TOTAL_FRAMES - 1, Math.floor(index)));
     const img = images[safeIndex];
@@ -66,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const iw = img.naturalWidth;
     const ih = img.naturalHeight;
 
-    // Cover math
     const hRatio = cw / iw;
     const vRatio = ch / ih;
     const ratio = Math.max(hRatio, vRatio);
@@ -78,37 +63,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ctx.clearRect(0, 0, cw, ch);
     ctx.drawImage(img, 0, 0, iw, ih, cx, cy, nw, nh);
-
-    updateHUD(safeIndex);
   }
 
-  function updateHUD(frameIndex) {
-    const pct = ((frameIndex / (TOTAL_FRAMES - 1)) * 100).toFixed(1);
-    if (hudCurrentFrame) {
-      hudCurrentFrame.textContent = String(frameIndex + 1).padStart(3, '0');
-    }
-    if (scrubberProgress) {
-      scrubberProgress.style.width = `${pct}%`;
-    }
-    if (scrubberThumb) {
-      scrubberThumb.style.left = `${pct}%`;
-    }
-  }
-
-  // Preloader
+  // Progressive Preloader
   function preloadImages() {
-    let firstLoaded = false;
+    let firstRenderDone = false;
 
-    // Frame 0 priority
+    // Load Frame 1 immediately
     const firstImg = new Image();
     firstImg.src = getFrameFilename(0);
     images[0] = firstImg;
     firstImg.onload = () => {
       loadedCount++;
-      if (!firstLoaded) {
+      if (!firstRenderDone) {
         resizeCanvas();
         renderFrame(0);
-        firstLoaded = true;
+        firstRenderDone = true;
       }
     };
 
@@ -120,13 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       img.onload = () => {
         loadedCount++;
-        const pct = Math.round((loadedCount / TOTAL_FRAMES) * 100);
-        if (loaderPercent) loaderPercent.textContent = `${pct}%`;
-
-        if (loadedCount >= 20 && canvasLoader.style.opacity !== '0') {
+        if (loadedCount >= 15 && canvasLoader && canvasLoader.style.opacity !== '0') {
           canvasLoader.style.opacity = '0';
           setTimeout(() => {
-            canvasLoader.style.display = 'none';
+            if (canvasLoader) canvasLoader.style.display = 'none';
           }, 500);
         }
       };
@@ -137,14 +104,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Animation Loop
+  // Continuous Auto-Loop Animation
   function tick() {
-    if (isPlaying && !isDragging) {
+    if (!isUserInteracting) {
       targetFrame += playDirection * playSpeed;
 
+      // Ping-pong smooth loop between start and end
       if (targetFrame >= TOTAL_FRAMES - 1) {
         targetFrame = TOTAL_FRAMES - 1;
-        playDirection = -1; // Smooth bounce
+        playDirection = -1;
       } else if (targetFrame <= 0) {
         targetFrame = 0;
         playDirection = 1;
@@ -154,57 +122,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // LERP smoothing
     const diff = targetFrame - currentFrame;
     if (Math.abs(diff) > 0.01) {
-      currentFrame += diff * 0.15;
+      currentFrame += diff * 0.18;
     } else {
       currentFrame = targetFrame;
     }
 
     renderFrame(currentFrame);
-    animationId = requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
   }
 
-  // Controls
-  function togglePlay() {
-    isPlaying = !isPlaying;
-    if (playPauseIcon) {
-      playPauseIcon.className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
-    }
-  }
-
-  function handleScrubber(e) {
-    const rect = scrubberTrack.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const ratio = Math.max(0, Math.min(1, clickX / rect.width));
-    targetFrame = ratio * (TOTAL_FRAMES - 1);
-    currentFrame = targetFrame;
-    renderFrame(currentFrame);
-  }
-
-  // Fullscreen
-  if (fullscreenBtn) {
-    fullscreenBtn.addEventListener('click', () => {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(() => {});
-        if (fullscreenIcon) fullscreenIcon.className = 'fa-solid fa-compress';
-      } else {
-        document.exitFullscreen().catch(() => {});
-        if (fullscreenIcon) fullscreenIcon.className = 'fa-solid fa-expand';
-      }
-    });
-  }
-
-  // Mouse / Touch Drag Scrubbing
+  // Optional Touch / Mouse Drag interaction (resumes auto-loop on release)
   function onPointerDown(e) {
-    // Check if target is inside an interactive button/hud
-    if (e.target.closest('button') || e.target.closest('.hud-track')) return;
-    
-    isDragging = true;
+    isUserInteracting = true;
     startX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
     startFrame = targetFrame;
   }
 
   function onPointerMove(e) {
-    if (!isDragging) return;
+    if (!isUserInteracting) return;
     const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
     const deltaX = clientX - startX;
 
@@ -215,52 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function onPointerUp() {
-    isDragging = false;
+    isUserInteracting = false;
   }
 
-  // Event Listeners
+  // Listeners
   window.addEventListener('resize', resizeCanvas);
 
-  if (playPauseBtn) {
-    playPauseBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      togglePlay();
-    });
-  }
-
-  if (resetAngleBtn) {
-    resetAngleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      targetFrame = 0;
-      playDirection = 1;
-      isPlaying = true;
-      if (playPauseIcon) playPauseIcon.className = 'fa-solid fa-pause';
-    });
-  }
-
-  // Scrubber Drag
-  if (scrubberTrack) {
-    let isScrubbing = false;
-    scrubberTrack.addEventListener('mousedown', (e) => {
-      e.stopPropagation();
-      isScrubbing = true;
-      isPlaying = false;
-      if (playPauseIcon) playPauseIcon.className = 'fa-solid fa-play';
-      handleScrubber(e);
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (isScrubbing) {
-        handleScrubber(e);
-      }
-    });
-
-    window.addEventListener('mouseup', () => {
-      isScrubbing = false;
-    });
-  }
-
-  // Canvas Drag (Global Window)
   window.addEventListener('mousedown', onPointerDown);
   window.addEventListener('mousemove', onPointerMove);
   window.addEventListener('mouseup', onPointerUp);
@@ -269,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('touchmove', onPointerMove, { passive: true });
   window.addEventListener('touchend', onPointerUp);
 
-  // Init
+  // Start
   preloadImages();
   resizeCanvas();
   tick();
