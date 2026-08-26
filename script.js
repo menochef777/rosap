@@ -30,12 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Handle Fullscreen Canvas Resize & Retina Resolution
   function resizeCanvas() {
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const width = window.innerWidth;
     const height = window.innerHeight;
 
     canvas.width = width * dpr;
     canvas.height = height * dpr;
+
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
 
     renderFrame(Math.round(currentFrame));
   }
@@ -46,6 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const img = images[safeIndex];
 
     if (!img || !img.complete || img.naturalWidth === 0) return;
+
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
 
     const cw = canvas.width;
     const ch = canvas.height;
