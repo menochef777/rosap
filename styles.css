@@ -249,53 +249,67 @@ a {
   font-weight: 400;
 }
 
+/* ==========================================================================
+   HERO BUTTONS (EXACT REFERENCE DESIGN: SOLID WHITE & TRANSLUCENT GLASS)
+   ========================================================================== */
 .hero-btn-group {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
 }
 
-/* Botão Principal ("Falar no WhatsApp") */
-.btn-primary-white {
+/* Botão 1: Solid White Pill */
+.btn-primary-pill {
   background: #ffffff;
   color: #000000;
   border-radius: var(--radius-full);
-  font-weight: 500;
-  font-size: 0.92rem;
-  padding: 13px 32px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 12px 28px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  gap: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent;
 }
 
-.btn-primary-white:hover {
-  background: #e5e7eb;
-  transform: translateY(-2px);
+.btn-primary-pill:hover {
+  background: #e8e8e8;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.15);
 }
 
-/* Botão Secundário Glass */
-.btn-secondary-glass {
-  border-radius: var(--radius-full);
-  padding: 13px 26px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.92rem;
+.btn-icon {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+/* Botão 2: Translucent Glass Pill (Equal to reference "Learn More") */
+.btn-glass-pill {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   color: #ffffff;
-  font-weight: 500;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 12px 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-secondary-glass:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
-.btn-icon-accent {
-  color: var(--accent-gold);
+.btn-glass-pill:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25), 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 /* ==========================================================================
