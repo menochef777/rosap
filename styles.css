@@ -111,7 +111,7 @@ a {
 
 .brand-title {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: #ffffff;
@@ -119,30 +119,30 @@ a {
 
 .brand-dot {
   color: var(--accent-gold);
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 800;
   margin-right: 6px;
 }
 
 .creci-badge {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--accent-gold);
   border: 1px solid rgba(212, 160, 90, 0.4);
   background: rgba(212, 160, 90, 0.08);
-  padding: 3px 8px;
+  padding: 2px 7px;
   border-radius: var(--radius-full);
 }
 
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
 }
 
 .nav-item {
-  font-size: 0.92rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--text-muted);
   transition: var(--transition);
@@ -156,15 +156,15 @@ a {
 .btn-nav-cta {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: #ffffff;
   color: #000000;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  padding: 10px 22px;
+  padding: 8px 18px;
   border-radius: var(--radius-full);
   transition: var(--transition);
-  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.12);
 }
 
 .btn-nav-cta:hover {
@@ -186,7 +186,7 @@ a {
 
 .hero-section {
   width: 100%;
-  padding: 140px 0 80px;
+  padding: 130px 0 60px;
 }
 
 .hero-container {
@@ -196,17 +196,17 @@ a {
 }
 
 .hero-text-content {
-  max-width: 780px;
+  max-width: 620px;
 }
 
 .hero-tagline {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .hero-tagline span {
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   color: var(--accent-gold);
   text-transform: uppercase;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
@@ -214,13 +214,13 @@ a {
 
 .hero-headline {
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 6.2vw, 5.8rem);
+  font-size: clamp(2.3rem, 4vw, 3.7rem);
   font-weight: 800;
-  line-height: 1.04;
-  letter-spacing: -0.04em;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   color: #ffffff;
-  margin-bottom: 38px;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
+  margin-bottom: 30px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .gradient-momento {
@@ -234,48 +234,48 @@ a {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
 }
 
 .btn-primary-white {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: #ffffff;
   color: #000000;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  padding: 16px 32px;
+  padding: 13px 26px;
   border-radius: var(--radius-full);
   transition: var(--transition);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .btn-primary-white:hover {
   background: #eaeaea;
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
 }
 
 .btn-secondary-glass {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   color: #ffffff;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  padding: 16px 28px;
+  padding: 13px 22px;
   border-radius: var(--radius-full);
   transition: var(--transition);
 }
 
 .btn-secondary-glass:hover {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
 
