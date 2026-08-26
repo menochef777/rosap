@@ -1,6 +1,6 @@
 /**
- * Rosebel Lopes • Hero 1
- * 3D High-Res Continuous Cinematic Loop (175 PNG Frames)
+ * Rosebel Lopes — Fullscreen 3D Video Loop Engine
+ * 175 High-Res Lossless PNG Frames from imghero2
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,13 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const canvas = document.getElementById('heroCanvas');
   const ctx = canvas.getContext('2d');
-  const canvasWrapper = document.getElementById('canvasWrapper');
 
   const images = new Array(TOTAL_FRAMES);
   let currentFrame = 0;
   let targetFrame = 0;
   let playDirection = 1;
-  const playSpeed = 0.35; // Suave e cinematográfico
+  const playSpeed = 0.38; // Smooth cinematic speed
 
   function getFrameFilename(index) {
     const num = String(index + 1).padStart(3, '0');
@@ -23,12 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function resizeCanvas() {
-    if (!canvasWrapper) return;
-    const rect = canvasWrapper.getBoundingClientRect();
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
 
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
@@ -66,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function preloadImages() {
     let firstLoaded = false;
 
-    // Load Frame 1 immediately
+    // Load Frame 1 with maximum priority
     const firstImg = new Image();
     firstImg.src = getFrameFilename(0);
     images[0] = firstImg;
@@ -86,9 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Continuous 60fps auto-loop animation
   function tick() {
     targetFrame += playDirection * playSpeed;
 
+    // Ping-pong smooth loop
     if (targetFrame >= TOTAL_FRAMES - 1) {
       targetFrame = TOTAL_FRAMES - 1;
       playDirection = -1;
@@ -97,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       playDirection = 1;
     }
 
+    // LERP smoothing
     const diff = targetFrame - currentFrame;
     if (Math.abs(diff) > 0.001) {
       currentFrame += diff * 0.15;

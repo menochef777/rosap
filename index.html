@@ -4,125 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rosebel Lopes • Consultoria Imobiliária Especializada | CRECI 205572</title>
-  <meta name="description" content="O imóvel ideal para o seu momento. Consultoria imobiliária especializada de alto padrão em São Paulo e região.">
-  
-  <!-- Google Fonts: Syne & Plus Jakarta Sans -->
+  <meta name="description" content="Consultoria Imobiliária Especializada • CRECI 205572. O imóvel ideal para o seu momento.">
+
+  <!-- Google Fonts: Syne & Plus Jakarta Sans / Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-theme">
+
+  <!-- FULLSCREEN VIDEO/CANVAS BACKGROUND LOOP (175 PNG FRAMES) -->
+  <div class="video-bg-container">
+    <canvas id="heroCanvas"></canvas>
+    <!-- Cinematic Dark Gradient Overlays for High Text Contrast -->
+    <div class="video-overlay-gradient"></div>
+  </div>
 
   <!-- HEADER / NAVBAR -->
-  <header class="site-header" id="siteHeader">
-    <div class="header-container">
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
       <a href="#hero" class="brand-logo">
-        <span class="logo-mark">◆</span>
-        <span class="logo-text">ROSEBEL LOPES <span class="logo-sub">CRECI 205572</span></span>
+        <span class="brand-title">Rosebel Lopes</span>
+        <span class="brand-dot">.</span>
+        <span class="creci-badge">CRECI 205572</span>
       </a>
 
-      <nav class="main-nav" id="mainNav">
-        <a href="#hero" class="nav-link active">Início</a>
-        <a href="#construtoras" class="nav-link">Construtoras</a>
-        <a href="#bairros" class="nav-link">Bairros</a>
-        <a href="#vitrine" class="nav-link">Vitrine</a>
-        <a href="#simulador" class="nav-link">Simulador</a>
-        <a href="#depoimentos" class="nav-link">Depoimentos</a>
-        <a href="#faq" class="nav-link">Dúvidas</a>
+      <nav class="nav-menu" id="navMenu">
+        <a href="#hero" class="nav-item active">Início</a>
+        <a href="#construtoras" class="nav-item">Construtoras</a>
+        <a href="#bairros" class="nav-item">Bairros</a>
+        <a href="#vitrine" class="nav-item">Vitrine</a>
+        <a href="#simulador" class="nav-item">Simulador</a>
+        <a href="#depoimentos" class="nav-item">Depoimentos</a>
+        <a href="#duvidas" class="nav-item">Dúvidas</a>
       </nav>
 
-      <div class="header-actions">
-        <a href="https://wa.me/5511981408548?text=Ol%C3%A1,%20Rosebel!%20Gostaria%20de%20uma%20consultoria%20imobili%C3%A1ria." target="_blank" rel="noopener noreferrer" class="btn-primary-action">
+      <div class="nav-actions">
+        <a href="https://wa.me/5511981408548?text=Ol%C3%A1,%20Rosebel!%20Gostaria%20de%20uma%20consultoria%20imobili%C3%A1ria." target="_blank" rel="noopener noreferrer" class="btn-nav-cta">
           <span>Fale Comigo</span>
-          <i class="fa-solid fa-arrow-up-right-from-square nav-icon-external"></i>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu Mobile">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
       </div>
     </div>
   </header>
 
-  <!-- HERO 1 SECTION (ZENITH REALTY FORMAT & HIGH-RES 3D LOOP) -->
-  <main>
+  <!-- HERO 1 SECTION -->
+  <main class="main-content">
     <section class="hero-section" id="hero">
       <div class="hero-container">
         
-        <!-- Hero Header Row -->
-        <div class="hero-header-row">
-          <div class="hero-title-col">
-            <div class="hero-badge-wrap">
-              <span class="pill-badge">
-                <span class="badge-dot"></span>
-                Consultoria Imobiliária Especializada • CRECI 205572
-              </span>
-            </div>
-
-            <h1 class="hero-title">
-              O imóvel ideal para <br>
-              <span class="title-highlight">o seu momento.</span>
-            </h1>
-            
-            <div class="hero-cta-group">
-              <a href="https://wa.me/5511981408548?text=Ol%C3%A1,%20Rosebel!%20Gostaria%20de%20uma%20consultoria%20imobili%C3%A1ria." target="_blank" rel="noopener noreferrer" class="btn-dark-pill">
-                <span>FALE COMIGO</span>
-              </a>
-              <a href="https://wa.me/5511981408548?text=Ol%C3%A1,%20Rosebel!%20Gostaria%20de%20uma%20consultoria%20imobili%C3%A1ria." target="_blank" rel="noopener noreferrer" class="btn-circle-arrow" aria-label="Fale Comigo no WhatsApp">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
+        <div class="hero-text-content">
+          <!-- Upper Tagline -->
+          <div class="hero-tagline">
+            <span>CONSULTORIA IMOBILIÁRIA ESPECIALIZADA • CRECI 205572</span>
           </div>
 
-          <div class="hero-desc-col">
-            <p class="hero-description">
-              Assessoria imobiliária de alto padrão personalizada. Encontre o imóvel perfeito para moradia ou investimento com segurança jurídica e atendimento exclusivo.
-            </p>
+          <!-- Main Display Headline -->
+          <h1 class="hero-headline">
+            O imóvel ideal <br>
+            para <br>
+            o seu <br>
+            <span class="gradient-momento">momento.</span>
+          </h1>
 
-            <div class="hero-mini-stats">
-              <div class="stat-item">
-                <span class="stat-num">Alto Padrão</span>
-                <span class="stat-lbl">Imóveis Selecionados</span>
-              </div>
-              <div class="stat-divider"></div>
-              <div class="stat-item">
-                <span class="stat-num">100%</span>
-                <span class="stat-lbl">Personalizado</span>
-              </div>
-              <div class="stat-divider"></div>
-              <div class="stat-item">
-                <span class="stat-num">SP & Região</span>
-                <span class="stat-lbl">Melhores Bairros</span>
-              </div>
-            </div>
-          </div>
-        </div>
+          <!-- CTA Buttons -->
+          <div class="hero-btn-group">
+            <a href="https://wa.me/5511981408548?text=Ol%C3%A1,%20Rosebel!%20Gostaria%20de%20uma%20consultoria%20imobili%C3%A1ria." target="_blank" rel="noopener noreferrer" class="btn-primary-white">
+              <span>Falar no WhatsApp</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
 
-        <!-- HERO 1 VISUAL STAGE (HIGH-RES PNG 3D LOOP) -->
-        <div class="hero-visual-stage" id="visualStage">
-          <div class="canvas-wrapper" id="canvasWrapper">
-            <canvas id="heroCanvas"></canvas>
-
-            <!-- Floating Stage Badges -->
-            <div class="stage-overlay top-left">
-              <div class="glass-badge">
-                <span class="badge-live-dot"></span>
-                <span>Rosebel Lopes • Consultoria Exclusiva</span>
-              </div>
-            </div>
-
-            <div class="stage-overlay top-right">
-              <div class="glass-badge">
-                <i class="fa-solid fa-gem"></i>
-                <span>Portfólio de Empreendimentos Premium</span>
-              </div>
-            </div>
+            <a href="#vitrine" class="btn-secondary-glass">
+              <i class="fa-solid fa-building-columns btn-icon-accent"></i>
+              <span>Ver Vitrine & Tabela de Preços</span>
+            </a>
           </div>
         </div>
 
