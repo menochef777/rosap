@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ROSEBEL LOPES — LUXURY REAL ESTATE HERO WITH 3D VIDEO LOOP BACKGROUND
+   ROSEBEL LOPES — INTER TYPOGRAPHY & LIQUID GLASS LUXURY STYLES
    ========================================================================== */
 
 :root {
@@ -9,11 +9,8 @@
   --accent-gold: #d4a05a;
   --accent-gold-light: #e8c89b;
   
-  --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --radius-full: 9999px;
-  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Reset */
@@ -28,7 +25,7 @@ html, body {
   height: 100%;
   background-color: var(--bg-dark);
   color: var(--text-white);
-  font-family: var(--font-body);
+  font-family: var(--font-main);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -39,7 +36,20 @@ a {
 }
 
 /* ==========================================================================
-   FULLSCREEN 3D CANVAS BACKGROUND (IMMEDIATE CONTINUOUS LOOP)
+   LIQUID GLASS EFFECT
+   ========================================================================== */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   FULLSCREEN 3D CANVAS BACKGROUND LOOP
    ========================================================================== */
 .video-bg-container {
   position: fixed;
@@ -59,27 +69,26 @@ a {
   image-rendering: -webkit-optimize-contrast;
 }
 
-/* Contrast gradients to make typography stand out with maximum legibility */
 .video-overlay-gradient {
   position: absolute;
   inset: 0;
   background: 
     linear-gradient(90deg, 
       rgba(0, 0, 0, 0.94) 0%, 
-      rgba(0, 0, 0, 0.82) 35%, 
-      rgba(0, 0, 0, 0.45) 60%, 
-      rgba(0, 0, 0, 0.15) 100%
+      rgba(0, 0, 0, 0.8) 38%, 
+      rgba(0, 0, 0, 0.4) 65%, 
+      rgba(0, 0, 0, 0.1) 100%
     ),
     linear-gradient(180deg, 
-      rgba(0, 0, 0, 0.7) 0%, 
+      rgba(0, 0, 0, 0.65) 0%, 
       rgba(0, 0, 0, 0) 25%, 
-      rgba(0, 0, 0, 0.65) 100%
+      rgba(0, 0, 0, 0.6) 100%
     );
   pointer-events: none;
 }
 
 /* ==========================================================================
-   NAVBAR (MATCHING SCREENSHOT)
+   NAVBAR
    ========================================================================== */
 .navbar {
   position: fixed;
@@ -87,7 +96,7 @@ a {
   left: 0;
   right: 0;
   z-index: 50;
-  padding: 22px 0;
+  padding: 20px 0;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -110,17 +119,16 @@ a {
 }
 
 .brand-title {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: #ffffff;
 }
 
 .brand-dot {
   color: var(--accent-gold);
-  font-size: 1.1rem;
-  font-weight: 800;
+  font-size: 1.15rem;
+  font-weight: 700;
   margin-right: 6px;
 }
 
@@ -138,14 +146,14 @@ a {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 26px;
 }
 
 .nav-item {
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.875rem;
+  font-weight: 400;
   color: var(--text-muted);
-  transition: var(--transition);
+  transition: color 0.2s ease;
 }
 
 .nav-item:hover,
@@ -154,23 +162,30 @@ a {
 }
 
 .btn-nav-cta {
+  border-radius: var(--radius-full);
+  padding: 10px 20px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #ffffff;
-  color: #000000;
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 8px 18px;
-  border-radius: var(--radius-full);
-  transition: var(--transition);
-  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.12);
+  font-size: 0.875rem;
+  color: #ffffff;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-nav-cta:hover {
-  background: #f0f0f0;
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+.icon-sm {
+  width: 15px;
+  height: 15px;
+}
+
+.icon-md {
+  width: 18px;
+  height: 18px;
 }
 
 /* ==========================================================================
@@ -196,7 +211,7 @@ a {
 }
 
 .hero-text-content {
-  max-width: 620px;
+  max-width: 680px;
 }
 
 .hero-tagline {
@@ -212,14 +227,15 @@ a {
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
+/* Inter 300 Light Headline with tracking -0.03em */
 .hero-headline {
-  font-family: var(--font-display);
-  font-size: clamp(2.3rem, 4vw, 3.7rem);
-  font-weight: 800;
+  font-family: var(--font-main);
+  font-size: clamp(2.6rem, 4.8vw, 4.4rem);
+  font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: #ffffff;
-  margin-bottom: 30px;
+  margin-bottom: 34px;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
@@ -228,54 +244,51 @@ a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+  font-weight: 400;
 }
 
 .hero-btn-group {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 16px;
 }
 
+/* Botão Principal ("Falar no WhatsApp") */
 .btn-primary-white {
+  background: #ffffff;
+  color: #000000;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  font-size: 0.92rem;
+  padding: 13px 32px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #ffffff;
-  color: #000000;
-  font-size: 0.88rem;
-  font-weight: 700;
-  padding: 13px 26px;
-  border-radius: var(--radius-full);
-  transition: var(--transition);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-primary-white:hover {
-  background: #eaeaea;
+  background: #e5e7eb;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
 }
 
+/* Botão Secundário Glass */
 .btn-secondary-glass {
+  border-radius: var(--radius-full);
+  padding: 13px 26px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 0.92rem;
   color: #ffffff;
-  font-size: 0.88rem;
-  font-weight: 600;
-  padding: 13px 22px;
-  border-radius: var(--radius-full);
-  transition: var(--transition);
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-secondary-glass:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
 }
 
@@ -297,7 +310,7 @@ a {
   }
 
   .hero-section {
-    padding: 120px 0 60px;
+    padding: 110px 0 60px;
   }
 }
 

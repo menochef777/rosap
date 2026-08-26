@@ -110,6 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(tick);
   }
 
+  // Initialize Lucide Icons
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
   window.addEventListener('resize', resizeCanvas);
 
   preloadImages();
