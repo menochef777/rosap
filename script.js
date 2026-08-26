@@ -1,5 +1,5 @@
 /**
- * Ultra-Smooth Scroll-Driven Frame Sequence Animation
+ * Hero 1 — 3D High-Res Continuous Cinematic Video Loop
  * 175 High-Res PNG Frames from imghero2
  */
 
@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const images = new Array(TOTAL_FRAMES);
   let currentFrame = 0;
   let targetFrame = 0;
+  let playDirection = 1;
+  const playSpeed = 0.38; // Cinematic frame rate speed
 
   function getFrameFilename(index) {
     const num = String(index + 1).padStart(3, '0');
@@ -57,14 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.drawImage(img, 0, 0, iw, ih, cx, cy, nw, nh);
   }
 
-  function updateScrollTarget() {
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    if (maxScroll <= 0) return;
-
-    const progress = Math.max(0, Math.min(1, window.scrollY / maxScroll));
-    targetFrame = progress * (TOTAL_FRAMES - 1);
-  }
-
   function preloadImages() {
     let firstLoaded = false;
 
@@ -80,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    // Load remaining frames in background
+    // Load remaining frames
     for (let i = 1; i < TOTAL_FRAMES; i++) {
       const img = new Image();
       img.src = getFrameFilename(i);
@@ -88,11 +82,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Smooth 60fps render loop with LERP interpolation
+  // Continuous 60fps auto-loop animation
   function tick() {
+    targetFrame += playDirection * playSpeed;
+
+    // Smooth bounce/ping-pong loop
+    if (targetFrame >= TOTAL_FRAMES - 1) {
+      targetFrame = TOTAL_FRAMES - 1;
+      playDirection = -1;
+    } else if (targetFrame <= 0) {
+      targetFrame = 0;
+      playDirection = 1;
+    }
+
+    // LERP smoothing
     const diff = targetFrame - currentFrame;
     if (Math.abs(diff) > 0.001) {
-      currentFrame += diff * 0.12; // Buttery smooth LERP
+      currentFrame += diff * 0.15;
     } else {
       currentFrame = targetFrame;
     }
@@ -101,13 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(tick);
   }
 
-  // Event Listeners
+  // Resize listener
   window.addEventListener('resize', resizeCanvas);
-  window.addEventListener('scroll', updateScrollTarget, { passive: true });
 
   // Init
   preloadImages();
   resizeCanvas();
-  updateScrollTarget();
   tick();
 });

@@ -5,24 +5,24 @@
 }
 
 html, body {
-  background-color: #000000;
-  height: 500vh;
-  overflow-x: hidden;
-}
-
-.scroll-container {
-  position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000000;
 }
 
 #heroCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: block;
   object-fit: cover;
-  pointer-events: none;
+  image-rendering: -webkit-optimize-contrast;
 }
