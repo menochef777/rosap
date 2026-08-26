@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROSAP — Discover Space You Truly Belong In | Luxury Living</title>
+  <meta name="description" content="Empreendimento residencial de altíssimo padrão. Arquitetura autoral, vistas panorâmicas e acabamentos impecáveis.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar (Subtle Luxury) -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      <a href="#" class="brand-logo">
+        <span class="logo-mark">◆</span>
+        <span class="logo-text">ZENITH <span class="logo-sub">REALTY</span></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#properties" class="nav-link active">Properties <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+        <a href="#mortgage" class="nav-link">Mortgage <span class="nav-tag">7.2%</span></a>
+        <a href="#company" class="nav-link">Company</a>
+        <a href="#careers" class="nav-link">Careers <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+        <a href="#blog" class="nav-link">Blog</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#post-property" class="btn-text-action">
+          <i class="fa-regular fa-bookmark"></i>
+          <span>Post a property</span>
+        </a>
+        <a href="#contact" class="btn-primary-action">
+          <span>Schedule Tour</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN HERO SECTION (Inspired by Screen Recording & Zenith Concept) -->
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="hero-container">
+        
+        <!-- Hero Header: Title & Description -->
+        <div class="hero-header-row">
+          <div class="hero-title-col">
+            <h1 class="hero-title">
+              Discover space you <br>
+              <span class="title-highlight">truly belong in</span>
+            </h1>
+            
+            <div class="hero-cta-group">
+              <a href="#contact" class="btn-dark-pill">
+                <span>BOOK A CALL</span>
+              </a>
+              <button class="btn-circle-arrow" id="exploreBtn" aria-label="Explore 3D View">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-desc-col">
+            <p class="hero-description">
+              Experience more than a house: find a sanctuary where your journey unfolds, rich with comfort and endless opportunities.
+            </p>
+
+            <div class="hero-mini-stats">
+              <div class="stat-item">
+                <span class="stat-num">300°</span>
+                <span class="stat-lbl">Panorâmica 3D</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <span class="stat-num">4</span>
+                <span class="stat-lbl">Suítes Premium</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <span class="stat-num">320m²</span>
+                <span class="stat-lbl">Área Privativa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HERO CINEMATIC 3D CANVAS STAGE -->
+        <div class="hero-visual-stage" id="visualStage">
+          <!-- Canvas element rendering 300 sequential frames -->
+          <div class="canvas-wrapper" id="canvasWrapper">
+            <canvas id="heroCanvas"></canvas>
+            
+            <!-- Preloader Overlay -->
+            <div class="canvas-loader" id="canvasLoader">
+              <div class="loader-spinner"></div>
+              <span class="loader-text">Carregando experiência 3D <span id="loaderPercent">0%</span></span>
+            </div>
+
+            <!-- Interactive 3D Control Badges Over Canvas -->
+            <div class="stage-overlay top-left">
+              <div class="glass-badge highlight">
+                <span class="badge-dot"></span>
+                <span>Tour Arquitetônico Dinâmico</span>
+              </div>
+            </div>
+
+            <div class="stage-overlay top-right">
+              <div class="glass-badge interactive-mode-tag">
+                <i class="fa-solid fa-arrows-left-right"></i>
+                <span>Arraste ou role para girar</span>
+              </div>
+            </div>
+
+            <!-- Bottom Floating Control Bar -->
+            <div class="stage-overlay bottom-bar">
+              <div class="cinematic-hud">
+                <button class="hud-btn" id="playPauseBtn" title="Play / Pause Auto Cinematic">
+                  <i class="fa-solid fa-pause" id="playPauseIcon"></i>
+                </button>
+
+                <div class="hud-timeline-container">
+                  <span class="hud-time" id="hudCurrentFrame">001</span>
+                  <div class="hud-scrubber-track" id="scrubberTrack">
+                    <div class="hud-scrubber-progress" id="scrubberProgress"></div>
+                    <div class="hud-scrubber-thumb" id="scrubberThumb"></div>
+                  </div>
+                  <span class="hud-time">300</span>
+                </div>
+
+                <button class="hud-btn" id="resetAngleBtn" title="Reset View">
+                  <i class="fa-solid fa-rotate-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Quick Specs Floating Card -->
+            <div class="floating-spec-card">
+              <div class="spec-card-header">
+                <span class="spec-card-tag">Exclusividade Rosap</span>
+                <span class="spec-price">A partir de R$ 3.8M</span>
+              </div>
+              <h3 class="spec-card-title">Edifício Zenith Tower</h3>
+              <p class="spec-card-loc"><i class="fa-solid fa-location-dot"></i> Setor Nobre • Vista Permanente</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: HIGHLIGHTS & ARCHITECTURAL FEATURES -->
+    <section class="section-features" id="properties">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="pill-badge">Conceito Arquitetônico</span>
+        </div>
+        <h2 class="section-heading-large text-center">
+          Design atemporal projetado para <br>
+          <span class="gradient-text">elevar a sua experiência</span>
+        </h2>
+
+        <div class="features-grid">
+          <div class="feature-card glass-card">
+            <div class="feature-icon-box">
+              <i class="fa-solid fa-compass-drafting"></i>
+            </div>
+            <h3 class="feature-title">Fachada Dinâmica & Sustentável</h3>
+            <p class="feature-desc">Brises móveis e aproveitamento máximo da iluminação natural com isolamento acústico de padrão europeu.</p>
+          </div>
+
+          <div class="feature-card glass-card">
+            <div class="feature-icon-box">
+              <i class="fa-solid fa-water-ladder"></i>
+            </div>
+            <h3 class="feature-title">Complexo de Lazer & Spa</h3>
+            <p class="feature-desc">Piscinas aquecidas com borda infinita, academia com vista panorâmica, spa privativo e sauna seca.</p>
+          </div>
+
+          <div class="feature-card glass-card">
+            <div class="feature-icon-box">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="feature-title">Segurança & Automação AI</h3>
+            <p class="feature-desc">Reconhecimento biométrico facial, clausura dupla para pedestres e veículos, e integração total com Alexa e HomeKit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CONTACT & BOOKING -->
+    <section class="section-contact" id="contact">
+      <div class="container">
+        <div class="contact-box glass-card">
+          <div class="contact-text-side">
+            <span class="pill-badge">Atendimento Exclusivo</span>
+            <h2 class="contact-title">Agende sua visita privativa ao decorado</h2>
+            <p class="contact-desc">Nosso time de consultores especializados está pronto para apresentar cada detalhe deste projeto icônico.</p>
+            
+            <div class="contact-direct">
+              <div class="direct-item">
+                <i class="fa-brands fa-whatsapp"></i>
+                <div>
+                  <strong>WhatsApp VIP</strong>
+                  <span>(11) 99999-8888</span>
+                </div>
+              </div>
+              <div class="direct-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div>
+                  <strong>E-mail</strong>
+                  <span>contato@zenithrosap.com.br</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form" id="bookingForm" onsubmit="event.preventDefault(); alert('Solicitação enviada com sucesso! Entraremos em contato em breve.');">
+            <div class="form-group">
+              <label for="name">Nome Completo</label>
+              <input type="text" id="name" required placeholder="Ex: Roberto Silva">
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" required placeholder="seu@email.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefone / WhatsApp</label>
+              <input type="tel" id="phone" required placeholder="(11) 99999-9999">
+            </div>
+            <button type="submit" class="btn-submit">
+              <span>SOLICITAR APRESENTAÇÃO VIP</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <span class="logo-mark">◆</span>
+          <span class="logo-text">ZENITH <span class="logo-sub">REALTY</span></span>
+        </div>
+        <p class="footer-tagline">Rosap Incorporações & Empreendimentos Imobiliários de Luxo.</p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="#hero">Início</a>
+          <a href="#properties">Empreendimento</a>
+          <a href="#contact">Plantas & Valores</a>
+          <a href="#contact">Agendamento</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Termos de Uso</a>
+          <a href="#">Privacidade</a>
+          <a href="#">Memorial de Incorporação</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Rosap • Zenith Realty. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
