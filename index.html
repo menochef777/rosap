@@ -18,16 +18,7 @@
 </head>
 <body class="dark-theme">
 
-  <!-- FULLSCREEN HIGH QUALITY 3D VIDEO BACKGROUND (remova_o_texto_202608262238.mp4) -->
-  <div class="video-bg-container">
-    <video id="heroVideo" class="hero-bg-video" autoplay loop muted playsinline webkit-playsinline preload="auto">
-      <source src="remova_o_texto_202608262238.mp4" type="video/mp4">
-    </video>
-    <!-- Cinematic Dark Gradient Overlays for High Text Contrast -->
-    <div class="video-overlay-gradient"></div>
-  </div>
-
-  <!-- HEADER / NAVBAR -->
+  <!-- FIXED NAVBAR -->
   <header class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#hero" class="brand-logo">
@@ -58,41 +49,70 @@
   <!-- MAIN CONTENT -->
   <main class="main-content">
     
-    <!-- HERO 1 SECTION (WITH NOVALUX FRAMER ENTRANCE ANIMATIONS) -->
-    <section class="hero-section" id="hero">
-      <div class="hero-container">
-        
-        <div class="hero-text-content">
-          <!-- Upper Tagline (Delayed Entrance) -->
-          <div class="hero-tagline animate-entrance delay-1">
-            <span>CONSULTORIA IMOBILIÁRIA ESPECIALIZADA • CRECI 205572</span>
+    <!-- SECTION 1: REACT BITS SCROLL EXPAND COMPONENT (PINNED HERO STAGE) -->
+    <section class="scroll-expand" id="scrollExpandHero">
+      <div class="scroll-expand__track" id="seTrack">
+        <div class="scroll-expand__stage" id="seStage">
+          
+          <!-- Expanding Frame -->
+          <div class="scroll-expand__frame" id="seFrame">
+            <video id="heroVideo" class="scroll-expand__media" autoplay loop muted playsinline webkit-playsinline preload="auto">
+              <source src="remova_o_texto_202608262238.mp4" type="video/mp4">
+            </video>
+            
+            <div class="scroll-expand__scrim" id="seScrim"></div>
+            
+            <!-- Children Overlay (Fades in once frame expands to full bleed) -->
+            <div class="scroll-expand__overlay" id="seOverlay">
+              <div class="hero-container">
+                <div class="hero-text-content">
+                  <div class="hero-tagline">
+                    <span>CONSULTORIA IMOBILIÁRIA ESPECIALIZADA • CRECI 205572</span>
+                  </div>
+
+                  <h1 class="hero-headline">
+                    O imóvel ideal <br>
+                    para <br>
+                    o seu <br>
+                    <span class="gradient-momento">momento.</span>
+                  </h1>
+
+                  <div class="hero-btn-group">
+                    <a href="https://wa.me/5511981408548?text=Ol%C3%A1,%20Rosebel!%20Gostaria%20de%20uma%20consultoria%20imobili%C3%A1ria." target="_blank" rel="noopener noreferrer" class="btn-primary-pill">
+                      <i data-lucide="message-circle" class="btn-icon"></i>
+                      <span>Falar no WhatsApp</span>
+                    </a>
+
+                    <a href="#vitrine" class="btn-glass-pill">
+                      <span>Ver Vitrine & Tabela de Preços</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Main Display Headline (Inter 300 Light, tracking -0.03em, Delayed Entrance) -->
-          <h1 class="hero-headline animate-entrance delay-2">
-            O imóvel ideal <br>
-            para <br>
-            o seu <br>
-            <span class="gradient-momento">momento.</span>
-          </h1>
-
-          <!-- CTA Buttons (Delayed Entrance) -->
-          <div class="hero-btn-group animate-entrance delay-3">
-            <a href="https://wa.me/5511981408548?text=Ol%C3%A1,%20Rosebel!%20Gostaria%20de%20uma%20consultoria%20imobili%C3%A1ria." target="_blank" rel="noopener noreferrer" class="btn-primary-pill">
-              <i data-lucide="message-circle" class="btn-icon"></i>
-              <span>Falar no WhatsApp</span>
-            </a>
-
-            <a href="#vitrine" class="btn-glass-pill">
-              <span>Ver Vitrine & Tabela de Preços</span>
-            </a>
+          <!-- Resting Initial Title (Lifts and fades away as scroll begins) -->
+          <div class="scroll-expand__title" id="seTitle">
+            <div class="resting-title-box">
+              <span class="resting-sup">ROSEBEL LOPES • CRECI 205572</span>
+              <h2>O imóvel ideal para o seu momento</h2>
+            </div>
           </div>
+
+          <!-- Resting Scroll Hint -->
+          <div class="scroll-expand__hint" id="seHint">
+            <div class="hint-inner">
+              <i data-lucide="chevron-down" class="hint-icon"></i>
+              <span>Role para explorar</span>
+            </div>
+          </div>
+
         </div>
-
       </div>
     </section>
 
-    <!-- CONSTRUTORAS & INCORPORADORAS PARCEIRAS SECTION -->
+    <!-- SECTION: CONSTRUTORAS & INCORPORADORAS PARCEIRAS -->
     <section class="partners-section" id="construtoras">
       <div class="partners-container">
         <div class="partners-header">

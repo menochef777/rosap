@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ROSEBEL LOPES — NOVALUX FRAMER STYLE LUXURY REAL ESTATE
+   ROSEBEL LOPES — NOVALUX FRAMER STYLE & REACT BITS SCROLL EXPAND
    ========================================================================== */
 
 :root {
@@ -63,47 +63,6 @@ a {
 }
 
 /* ==========================================================================
-   FULLSCREEN HARDWARE-ACCELERATED VIDEO BACKGROUND (ZERO MOBILE STUTTER)
-   ========================================================================== */
-.video-bg-container {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  overflow: hidden;
-  background: #000000;
-  pointer-events: none;
-}
-
-.hero-bg-video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-.video-overlay-gradient {
-  position: absolute;
-  inset: 0;
-  background: 
-    linear-gradient(90deg, 
-      rgba(0, 0, 0, 0.94) 0%, 
-      rgba(0, 0, 0, 0.82) 36%, 
-      rgba(0, 0, 0, 0.45) 65%, 
-      rgba(0, 0, 0, 0.2) 100%
-    ),
-    linear-gradient(180deg, 
-      rgba(0, 0, 0, 0.65) 0%, 
-      rgba(0, 0, 0, 0) 25%, 
-      rgba(0, 0, 0, 0.8) 100%
-    );
-  pointer-events: none;
-}
-
-/* ==========================================================================
    NAVBAR
    ========================================================================== */
 .navbar {
@@ -111,7 +70,7 @@ a {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 50;
+  z-index: 100;
   padding: 18px 0;
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(16px);
@@ -205,22 +164,166 @@ a {
 }
 
 /* ==========================================================================
-   HERO 1 MAIN SECTION WITH NOVALUX FRAMER ENTRANCE ANIMATION
+   REACT BITS <ScrollExpand /> COMPONENT STYLES
    ========================================================================== */
-.main-content {
+.scroll-expand {
   position: relative;
-  z-index: 10;
   width: 100%;
 }
 
-.hero-section {
+.scroll-expand__track {
+  position: relative;
   width: 100%;
-  min-height: 100vh;
+}
+
+.scroll-expand__stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  padding: 140px 0 60px;
+  justify-content: center;
+  background: #000000;
 }
 
+.scroll-expand__frame {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(21% 29% 21% 29% round 24px);
+  will-change: clip-path;
+  overflow: hidden;
+}
+
+.scroll-expand__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+  transform-origin: center;
+  user-select: none;
+  -webkit-user-drag: none;
+  transform: translateZ(0);
+}
+
+.scroll-expand__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: 
+    linear-gradient(90deg, 
+      rgba(0, 0, 0, 0.95) 0%, 
+      rgba(0, 0, 0, 0.82) 36%, 
+      rgba(0, 0, 0, 0.45) 65%, 
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    linear-gradient(180deg, 
+      rgba(0, 0, 0, 0.65) 0%, 
+      rgba(0, 0, 0, 0) 25%, 
+      rgba(0, 0, 0, 0.8) 100%
+    );
+  opacity: 0;
+}
+
+.scroll-expand__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  will-change: opacity, transform;
+  pointer-events: auto;
+}
+
+.scroll-expand__title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0 6%;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  will-change: opacity, transform;
+  z-index: 10;
+}
+
+.resting-title-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 24px 36px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.resting-sup {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent-gold);
+}
+
+.resting-title-box h2 {
+  font-family: var(--font-main);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.scroll-expand__hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2.2rem;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  will-change: opacity, transform;
+  z-index: 10;
+}
+
+.hint-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(18, 19, 24, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.hint-icon {
+  width: 16px;
+  height: 16px;
+  animation: bounceDown 1.6s infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* ==========================================================================
+   HERO CONTENT (INSIDE OVERLAY)
+   ========================================================================== */
 .hero-container {
   max-width: 1440px;
   margin: 0 auto;
@@ -230,35 +333,6 @@ a {
 
 .hero-text-content {
   max-width: 680px;
-}
-
-/* Framer Entrance Animations */
-@keyframes fadeUpReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-entrance {
-  opacity: 0;
-  animation: fadeUpReveal 1s var(--ease-framer) forwards;
-}
-
-.delay-1 {
-  animation-delay: 0.25s;
-}
-
-.delay-2 {
-  animation-delay: 0.55s;
-}
-
-.delay-3 {
-  animation-delay: 0.85s;
 }
 
 .hero-tagline {
@@ -359,8 +433,8 @@ a {
   position: relative;
   z-index: 10;
   width: 100%;
-  padding: 40px 0 80px;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(5, 6, 8, 0.9) 40%, rgba(7, 8, 10, 1) 100%);
+  padding: 60px 0 80px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(5, 6, 8, 1) 40%, rgba(7, 8, 10, 1) 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -679,9 +753,8 @@ a {
 }
 
 @media (max-width: 768px) {
-  .hero-section {
-    padding: 120px 0 50px;
-    min-height: auto;
+  .scroll-expand__frame {
+    clip-path: inset(16% 12% 16% 12% round 20px);
   }
 
   .hero-headline {
@@ -701,7 +774,7 @@ a {
   }
 
   .partners-section {
-    padding: 30px 0 60px;
+    padding: 40px 0 60px;
   }
 
   .partners-grid {
