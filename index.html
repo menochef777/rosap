@@ -2,14 +2,14 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Rosebel Lopes • Consultoria Imobiliária Especializada | CRECI 205572</title>
   <meta name="description" content="Consultoria Imobiliária Especializada • CRECI 205572. O imóvel ideal para o seu momento.">
 
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Inter & Syne -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -18,9 +18,11 @@
 </head>
 <body class="dark-theme">
 
-  <!-- FULLSCREEN VIDEO/CANVAS BACKGROUND LOOP (175 PNG FRAMES) -->
+  <!-- FULLSCREEN HARDWARE-ACCELERATED VIDEO BACKGROUND (ZERO STUTTER ON MOBILE) -->
   <div class="video-bg-container">
-    <canvas id="heroCanvas"></canvas>
+    <video id="heroVideo" class="hero-bg-video" autoplay loop muted playsinline webkit-playsinline poster="imghero2/frame_001.png">
+      <source src="hero_bg_optimized.mp4" type="video/mp4">
+    </video>
     <!-- Cinematic Dark Gradient Overlays for High Text Contrast -->
     <div class="video-overlay-gradient"></div>
   </div>
@@ -37,7 +39,7 @@
       <nav class="nav-menu" id="navMenu">
         <a href="#hero" class="nav-item active">Início</a>
         <a href="#construtoras" class="nav-item">Construtoras</a>
-        <a href="#bairros" class="nav-item">Bairros</a>
+        <a href="#sobre" class="nav-item">Sobre</a>
         <a href="#vitrine" class="nav-item">Vitrine</a>
         <a href="#simulador" class="nav-item">Simulador</a>
         <a href="#depoimentos" class="nav-item">Depoimentos</a>
@@ -55,26 +57,27 @@
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
-    <!-- HERO 1 SECTION -->
+    
+    <!-- HERO 1 SECTION (WITH NOVALUX FRAMER ENTRANCE ANIMATIONS) -->
     <section class="hero-section" id="hero">
       <div class="hero-container">
         
         <div class="hero-text-content">
-          <!-- Upper Tagline -->
-          <div class="hero-tagline">
+          <!-- Upper Tagline (Delayed Entrance) -->
+          <div class="hero-tagline animate-entrance delay-1">
             <span>CONSULTORIA IMOBILIÁRIA ESPECIALIZADA • CRECI 205572</span>
           </div>
 
-          <!-- Main Display Headline (Inter 300 Light, tracking -0.03em) -->
-          <h1 class="hero-headline">
+          <!-- Main Display Headline (Inter 300 Light, tracking -0.03em, Delayed Entrance) -->
+          <h1 class="hero-headline animate-entrance delay-2">
             O imóvel ideal <br>
             para <br>
             o seu <br>
             <span class="gradient-momento">momento.</span>
           </h1>
 
-          <!-- CTA Buttons (Matching Reference Design) -->
-          <div class="hero-btn-group">
+          <!-- CTA Buttons (Delayed Entrance) -->
+          <div class="hero-btn-group animate-entrance delay-3">
             <a href="https://wa.me/5511981408548?text=Ol%C3%A1,%20Rosebel!%20Gostaria%20de%20uma%20consultoria%20imobili%C3%A1ria." target="_blank" rel="noopener noreferrer" class="btn-primary-pill">
               <i data-lucide="message-circle" class="btn-icon"></i>
               <span>Falar no WhatsApp</span>
@@ -119,6 +122,98 @@
         </div>
       </div>
     </section>
+
+    <!-- SECTION 2: NOVALUX STYLE "WHO WE ARE / SOBRE A CONSULTORIA" -->
+    <section class="about-section" id="sobre">
+      <div class="about-container">
+        
+        <!-- About Top Header -->
+        <div class="about-header-row">
+          <div class="about-tagline-wrap">
+            <span class="section-tag-pill">
+              <span class="tag-square"></span>
+              QUEM SOMOS
+            </span>
+          </div>
+
+          <h2 class="about-editorial-title">
+            Na Rosebel Lopes, acreditamos que imóveis de alto padrão merecem representação excepcional. Combinamos inteligência de mercado, curadoria refinada e atendimento sob medida para você realizar a melhor escolha com total segurança.
+          </h2>
+
+          <div class="about-header-action">
+            <a href="https://wa.me/5511981408548?text=Ol%C3%A1,%20Rosebel!%20Gostaria%20de%20saber%20mais%20sobre%20a%20consultoria." target="_blank" rel="noopener noreferrer" class="about-link-more">
+              <span>Saiba Mais Sobre Nós</span>
+              <i data-lucide="arrow-up-right" class="icon-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- About Bento Grid -->
+        <div class="about-bento-grid">
+          <!-- Left Presentation Card -->
+          <div class="about-hero-card liquid-glass">
+            <div class="card-bg-visual"></div>
+            <div class="card-content-overlay">
+              <div class="card-brand-badge">
+                <span class="badge-dot-gold"></span>
+                <span>Rosebel Lopes</span>
+              </div>
+              <h3 class="card-title">Excelência & Discrição em Alto Padrão</h3>
+              <p class="card-desc">Atendimento exclusivo focado nas melhores oportunidades residenciais e de investimento em São Paulo.</p>
+            </div>
+          </div>
+
+          <!-- Right 2x2 Metrics Grid -->
+          <div class="metrics-grid">
+            <!-- Stat 1 -->
+            <div class="metric-box liquid-glass">
+              <div class="metric-icon-wrap">
+                <i data-lucide="building" class="metric-icon"></i>
+              </div>
+              <div class="metric-data">
+                <span class="metric-number">+R$ 450M+</span>
+                <span class="metric-label">Volume em Imóveis Negociados</span>
+              </div>
+            </div>
+
+            <!-- Stat 2 -->
+            <div class="metric-box liquid-glass">
+              <div class="metric-icon-wrap">
+                <i data-lucide="gem" class="metric-icon"></i>
+              </div>
+              <div class="metric-data">
+                <span class="metric-number">120+</span>
+                <span class="metric-label">Imóveis de Luxo no Portfólio</span>
+              </div>
+            </div>
+
+            <!-- Stat 3 -->
+            <div class="metric-box liquid-glass">
+              <div class="metric-icon-wrap">
+                <i data-lucide="award" class="metric-icon"></i>
+              </div>
+              <div class="metric-data">
+                <span class="metric-number">15+</span>
+                <span class="metric-label">Anos de Experiência no Mercado</span>
+              </div>
+            </div>
+
+            <!-- Stat 4 -->
+            <div class="metric-box liquid-glass">
+              <div class="metric-icon-wrap">
+                <i data-lucide="users" class="metric-icon"></i>
+              </div>
+              <div class="metric-data">
+                <span class="metric-number">98%</span>
+                <span class="metric-label">Índice de Satisfação de Clientes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <script src="script.js"></script>
